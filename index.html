@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryan Pham - Senior Fullstack Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .cv-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #fff, #e2e8f0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .title {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .contact-item::before {
+            content: '●';
+            color: #f7fafc;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 0;
+        }
+
+        .left-column {
+            padding: 2.5rem;
+        }
+
+        .right-column {
+            background: #f8fafc;
+            padding: 2.5rem 2rem;
+            border-left: 1px solid #e2e8f0;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1a202c;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .summary {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #4a5568;
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .job {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .job:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .job-header {
+            margin-bottom: 1rem;
+        }
+
+        .company {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.3rem;
+        }
+
+        .job-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.3rem;
+        }
+
+        .job-meta {
+            font-size: 0.9rem;
+            color: #718096;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .job-description ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .job-description li {
+            margin-bottom: 0.6rem;
+            color: #4a5568;
+            position: relative;
+            padding-left: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .job-description li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .tech-stack {
+            margin-top: 1rem;
+            padding: 0.8rem 1.2rem;
+            background: #edf2f7;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #4a5568;
+        }
+
+        .tech-stack strong {
+            color: #2d3748;
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .skill-category h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .skill-list {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #4a5568;
+        }
+
+        .certification {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .certification:hover {
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.3rem;
+        }
+
+        .cert-year {
+            font-size: 0.8rem;
+            color: #718096;
+        }
+
+        .education {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .edu-school {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.3rem;
+        }
+
+        .edu-degree {
+            font-size: 0.9rem;
+            color: #4a5568;
+            margin-bottom: 0.3rem;
+        }
+
+        .edu-date {
+            font-size: 0.8rem;
+            color: #718096;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: none;
+            }
+            
+            .header::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .right-column {
+                border-left: none;
+                border-top: 1px solid #e2e8f0;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">Ryan Pham</h1>
+                <p class="title">Senior Fullstack Software Engineer | Singapore</p>
+                <div class="contact-info">
+                    <div class="contact-item">phuc.pham.itf@gmail.com</div>
+                    <div class="contact-item">+65</div>
+                    <div class="contact-item">linkedin.com/in/phuc-pham-itf</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="left-column">
+                <section class="section">
+                    <h2>Professional Summary</h2>
+                    <div class="summary">
+                        Senior Fullstack Software Engineer with 8+ years of experience building scalable e-commerce, fintech, and IoT platforms across APAC. Strong expertise in Ruby on Rails, Vue/Nuxt, and cloud-native architectures. Certified Scrum Master and AWS Solutions Architect Associate with a proven track record of delivering high-traffic systems serving millions of users worldwide.
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Professional Experience</h2>
+                    
+                    <div class="job">
+                        <div class="job-header">
+                            <div class="company">SEPHORA</div>
+                            <div class="job-title">Senior Fullstack Developer</div>
+                            <div class="job-meta">
+                                <span>Singapore</span>
+                                <span>04/2021 - Present</span>
+                            </div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Designed and implemented secure authentication and user identity systems</li>
+                                <li>Integrated CRM platforms, improving engagement and enabling real-time customer data synchronization</li>
+                                <li>Developed loyalty and rewards services, powering points, redemptions, and personalized offers</li>
+                                <li>Optimized backend services to scale for millions of global users</li>
+                                <li>Led migration from a monolithic to microservices architecture, applying BFF and event-driven design</li>
+                                <li>Facilitated Scrum ceremonies, driving major initiatives as Scrum Master to ensure timely, high-quality delivery</li>
+                                <li>Integrated AI model outputs into APIs, enabling personalized and data-driven features</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <strong>Tech stack:</strong> Ruby on Rails, Vue, Nuxt, AWS, RabbitMQ, Java Spring
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <div class="company">AIRHOST</div>
+                            <div class="job-title">Fullstack Developer</div>
+                            <div class="job-meta">
+                                <span>Singapore</span>
+                                <span>12/2019 - 04/2021</span>
+                            </div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Built IoT-powered smart-lock management for property bookings</li>
+                                <li>Integrated multiple smart lock providers (RemoteLock, KeyWe, Blockchain)</li>
+                                <li>Developed OTA integrations (Ctrip, Booking.com, Expedia, Airbnb, Rakuten)</li>
+                                <li>Implemented coupon strategies and tax modules for booking flows</li>
+                                <li>Designed APIs for third-party integrations</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <strong>Tech stack:</strong> Ruby on Rails, jQuery, PostgreSQL, AWS
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <div class="company">IPCOIN EXCHANGE</div>
+                            <div class="job-title">Backend Developer</div>
+                            <div class="job-meta">
+                                <span>Vietnam</span>
+                                <span>08/2018 - 12/2019</span>
+                            </div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Developed core trading engine for a cryptocurrency exchange (Binance-like)</li>
+                                <li>Integrated blockchain wallets (BTC, NEO)</li>
+                                <li>Built distributed systems using Docker, Kubernetes, Kafka, RabbitMQ</li>
+                                <li>Designed scalable microservices, ensuring fault tolerance and maintainability</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <strong>Tech stack:</strong> Ruby on Rails, PostgreSQL, Blockchain, Docker, Kubernetes, Kafka, RabbitMQ
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <div class="company">CODE ENGINE STUDIO</div>
+                            <div class="job-title">Fullstack Developer</div>
+                            <div class="job-meta">
+                                <span>Vietnam</span>
+                                <span>11/2016 - 06/2018</span>
+                            </div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Built a time-tracking SaaS (similar to Toggl)</li>
+                                <li>Developed rental home management app (Zilly, now Tellus) with lease, property, and chat modules</li>
+                                <li>Implemented Elasticsearch integration for search and analytics</li>
+                                <li>Maintained CMS platforms for US clients</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <strong>Tech stack:</strong> Ruby on Rails, Angular, PostgreSQL, Elasticsearch, SendBird, SwaggerUI
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="right-column">
+                <section class="section">
+                    <h2>Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>Languages & Frameworks</h3>
+                            <div class="skill-list">Ruby on Rails, Go, Java Spring, Vue, Nuxt, Angular, TypeScript</div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Databases & Caching</h3>
+                            <div class="skill-list">PostgreSQL, Redis, Memcached, DynamoDB</div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Cloud & DevOps</h3>
+                            <div class="skill-list">AWS SAA, Docker, Kubernetes</div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Messaging & Streaming</h3>
+                            <div class="skill-list">RabbitMQ, Kafka</div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Testing & Tools</h3>
+                            <div class="skill-list">RSpec, Cucumber, Git, TDD</div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Specialized</h3>
+                            <div class="skill-list">AI, Blockchain, Microservices, Design Patterns, Event-driven systems</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Certifications</h2>
+                    <div class="certification">
+                        <div class="cert-name">AWS Associate Solutions Architect</div>
+                        <div class="cert-year">2025</div>
+                    </div>
+                    <div class="certification">
+                        <div class="cert-name">Professional Scrum Master™ I (PSM I)</div>
+                        <div class="cert-year">2023</div>
+                    </div>
+                    <div class="certification">
+                        <div class="cert-name">SQL Advanced (Hackerrank)</div>
+                        <div class="cert-year">2024</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Education</h2>
+                    <div class="education">
+                        <div class="edu-school">Da Nang University of Technology and Sciences</div>
+                        <div class="edu-degree">B.Sc. in IT Engineering</div>
+                        <div class="edu-date">08/2012 - 08/2017</div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
